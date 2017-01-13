@@ -1,10 +1,14 @@
+console.log('main.js');
+
 document.getElementById('myForm').addEventListener('submit', saveBookmark);
 
 function saveBookmark(e){
+
 	e.preventDefault();
 
 	var siteName = document.getElementById('siteName').value;
 	var siteUrl = document.getElementById('siteUrl').value;
+	console.log(siteName);
 
 	var bookmark = {
 		name: siteName,
