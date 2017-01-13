@@ -49,7 +49,22 @@ function fetchBookmarks(){
 
 		bookmarksResults.innerHTML += '<div class="well">'+
 																	'<h3>'+name+
+																	' <a class="btn btn-default" target="_blank" href="'+url+'">Visit</a>'+
+																	' <a onclick="deleteBookmark(\''+url+'\')" class="btn btn-danger" href="#">Delete</a>'+
 																	'</h3>'+
 																	'</div>'
 	}
+}
+
+function deleteBookmark(url){
+	var bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+
+	for(var i = 0; i < bookmarks.length; i++){
+		if(bookmarks[i].url == url){
+			bookmarks.splice(i, 1);
+		}
+	}
+	localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+
+	fetchBookmarks();
 }
